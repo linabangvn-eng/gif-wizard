@@ -77,5 +77,5 @@ class AdClickManager {
     }
 }
 
-// 전역에서 사용할 수 있도록 생성
-const adManager = new AdClickManager();
+// 전역에서 window.adManager로 접근 가능하도록 window에 직접 등록
+window.adManager = new AdClickManager();
