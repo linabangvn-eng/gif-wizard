@@ -241,8 +241,8 @@
         <div class="glass-panel p-10 rounded-3xl text-center max-w-lg w-[90%] transform scale-95 transition-transform duration-300"
             id="ad-modal-content">
             <h2 class="text-2xl font-bold text-pink-300 mb-4">앗, 무료 변환 횟수 3회를 모두 사용했어요! 😢</h2>
-            <p class="text-gray-300 mb-8 leading-relaxed">아래 스폰서 광고를 클릭하여 서비스를 후원해주시면,<br><strong class="text-white">추가
-                    3회 무료 변환 혜택</strong>을 달콤하게 제공해드립니다!</p>
+            <p class="text-gray-300 mb-8 leading-relaxed">아래 광고를 <strong class="text-yellow-300">한 번만
+                    클릭</strong>하면<br>GIF 변환이 바로 시작됩니다! 🎬</p>
 
             <div class="cursor-pointer mb-2" tabindex="0" id="ad-container">
                 <!-- Vercel API 또는 로컬 API를 통해 동적으로 쿠팡 상품을 불러와서 여기에 렌더링합니다 -->
@@ -328,10 +328,10 @@
                 console.error("쿠팡 광고 로딩 실패, 기본 대체 광고 표시:", err);
                 const container = document.getElementById('ad-container');
                 container.innerHTML = `
-                    <a href="https://www.coupang.com" target="_blank" class="block glass-panel border-dashed border-2 border-indigo-400/30 p-8 rounded-2xl hover:-translate-y-1 transition-transform group" id="mock-ad">
-                        <span class="bg-white/10 text-xs px-3 py-1.5 rounded-lg text-white mb-4 inline-block tracking-wide">스폰서 사이트 이동</span>
-                        <h3 class="text-indigo-400 text-xl font-bold mb-2 group-hover:text-indigo-300 transition-colors">📦 빠르고 편리한 쇼핑 📦</h3>
-                        <p class="text-pink-400 font-medium">광고 영역입니다. 클릭 시 전환 혜택이 지급됩니다 >></p>
+                    <a href="https://link.coupang.com/re/AFFSDP?lptag=AF3679354" target="_blank" rel="noopener noreferrer" class="block glass-panel border-2 border-yellow-400/50 p-8 rounded-2xl hover:-translate-y-1 transition-transform group" id="mock-ad">
+                        <span class="bg-yellow-400/20 text-yellow-300 text-xs px-3 py-1.5 rounded-lg mb-4 inline-block tracking-wide font-bold">👆 클릭하면 GIF 변환이 시작돼요!</span>
+                        <h3 class="text-white text-xl font-bold mb-2 group-hover:text-yellow-300 transition-colors">🚀 쿠팡 로켓배송 특가 보러가기!</h3>
+                        <p class="text-yellow-400 font-bold">✨ 광고 클릭 → 즉시 GIF 변환 시작! ✨</p>
                     </a>
                 `;
                 document.getElementById('mock-ad').addEventListener('click', () => {
