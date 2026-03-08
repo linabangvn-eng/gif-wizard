@@ -104,11 +104,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    let batchCompleted = false; // 이전 배치 변환이 완료됐는지 추적하는 플래그
+
+    function resetForNewBatch() {
+        selectedFiles = [];
+        previewList.innerHTML = '';
+        previewSection.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        actionBar.classList.remove('opacity-100', 'pointer-events-auto');
+        actionBar.classList.add('opacity-0', 'pointer-events-none');
+        loadingEl.classList.add('hidden');
+        loadingEl.textContent = '진행 중...';
+        convertBtn.disabled = false;
+        convertBtn.innerHTML = `
+            <span class="text-sm font-bold tracking-wide text-white">GIF 일괄 변환 시작</span>
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+        `;
+        batchCompleted = false;
+        fileInput.value = "";
+    }
+
     function handleFiles(files) {
         if (isConverting) {
             alert("이미 변환 작업이 진행 중입니다.");
             return;
         }
+
+        // 이전 배치 변환이 완료된 상태에서 새 파일 추가 시 → 자동 초기화 후 새로 시작!
+        if (batchCompleted) {
+            resetForNewBatch();
+        }
+
         const videoFiles = Array.from(files).filter(file => file.type.startsWith('video/'));
         if (videoFiles.length === 0) {
             alert("동영상(Video) 파일만 지원됩니다. (mp4, webm 등)");
@@ -218,8 +246,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isConverting) {
             isConverting = false;
-            loadingEl.textContent = "변환이 완료되었습니다!";
-            convertBtn.innerHTML = '<span class="text-sm font-bold tracking-wide text-white">완료!</span><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+            batchCompleted = true; // 배치 완료! 다음 파일 올리면 자동 초기화됨
+            loadingEl.textContent = "✅ 모두 완료! 새 동영상을 올리면 초기화됩니다.";
+            convertBtn.disabled = false;
+            convertBtn.innerHTML = `
+                <span class="text-sm font-bold tracking-wide text-white">✅ 변환 완료!</span>
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            `;
         }
     }
 
