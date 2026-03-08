@@ -1,0 +1,469 @@
+/* 초프리미엄 다크/글래스모피즘 테마 및 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg-color: #050614;
+    --bg-gradient: linear-gradient(145deg, #050614 0%, #0a0b26 40%, #170f3f 100%);
+    --card-bg: rgba(18, 20, 38, 0.45);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-light: #94a3b8;
+    --primary: #7c3aed;
+    --primary-hover: #8b5cf6;
+    --success: #ec4899;
+    --success-hover: #f472b6;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    --blur-val: blur(40px);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', sans-serif;
+    background: var(--bg-color);
+    background-image:
+        radial-gradient(circle at 15% 0%, rgba(124, 58, 237, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 100%, rgba(236, 72, 153, 0.12) 0%, transparent 40%),
+        var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 92%;
+    max-width: 680px;
+    /* PC에서도 모바일 앱처럼 세련되고 집중된 형태(좁은 폭) 유지 */
+    background: var(--card-bg);
+    backdrop-filter: var(--blur-val);
+    -webkit-backdrop-filter: var(--blur-val);
+    border: 1px solid var(--card-border);
+    border-radius: 36px;
+    padding: 50px 40px;
+    box-shadow: var(--glass-shadow);
+    margin: 40px auto;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.3rem;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #e2e8f0 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+header p {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    word-break: keep-all;
+    margin: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 드롭존 */
+.dropzone {
+    border: 2px dashed rgba(124, 58, 237, 0.4);
+    border-radius: 28px;
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(124, 58, 237, 0.03);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropzone:hover,
+.dropzone.dragover {
+    border-color: var(--primary-hover);
+    background: rgba(124, 58, 237, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+}
+
+.dropzone-content svg {
+    color: var(--primary-hover);
+    margin-bottom: 15px;
+    width: 52px;
+    height: 52px;
+    transition: transform 0.3s;
+}
+
+.dropzone:hover .dropzone-content svg {
+    transform: scale(1.1);
+}
+
+.dropzone-content p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin: 10px 0;
+}
+
+.dropzone-content span {
+    display: block;
+    margin: 25px 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.dropzone-content span::before,
+.dropzone-content span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.dropzone-content span::before {
+    left: calc(50% - 70px);
+}
+
+.dropzone-content span::after {
+    right: calc(50% - 70px);
+}
+
+/* 버튼 공통 */
+button {
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, #6d28d9 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(124, 58, 237, 0.5);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success) 0%, #e11d48 100%);
+    color: white;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(244, 63, 94, 0.35);
+    border-radius: 24px;
+    letter-spacing: 0.02em;
+}
+
+.btn-success:hover {
+    box-shadow: 0 12px 35px rgba(244, 63, 94, 0.5);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--success-hover) 0%, var(--success) 100%);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: #f8fafc;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* 프리뷰 섹션 */
+.preview-section {
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.preview-list {
+    display: grid;
+    /* 카드가 1개일 때 너무 꽉 차지 않게 하면서, 2개일 때 예쁘게 배열되도록 조정 */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+    max-height: 480px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.preview-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.preview-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.preview-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+/* 비디오 카드 - 이미지 목업과 동일한 세련된 모서리와 배경 */
+.video-card {
+    background: rgba(10, 15, 30, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.video-card:hover {
+    border-color: rgba(124, 58, 237, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.video-card video,
+.video-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #000;
+    border-radius: 16px;
+}
+
+.video-card-status {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-light);
+}
+
+.video-card-status.processing {
+    color: #fcd34d;
+    background: rgba(252, 211, 77, 0.08);
+    animation: pulse 1.5s infinite;
+}
+
+.video-card-status.done {
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.08);
+}
+
+.video-card .btn-download-small {
+    background: linear-gradient(135deg, var(--primary) 0%, #6d28d9 100%);
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.2);
+    display: block;
+}
+
+.video-card .btn-download-small:hover {
+    background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+}
+
+.video-card .btn-remove {
+    background: transparent;
+    color: #fb7185;
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    padding: 10px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.video-card .btn-remove:hover {
+    background: rgba(244, 63, 94, 0.1);
+}
+
+/* 설정 패널 */
+.settings-panel {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 24px;
+    margin: 30px 0;
+    border: 1px solid var(--border-color);
+}
+
+.setting-item label {
+    color: #f1f5f9;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.setting-item input[type="number"] {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    color: white;
+    font-family: inherit;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.setting-item input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.setting-item small {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-top: 10px;
+    display: block;
+}
+
+#loading {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 700;
+    color: var(--primary-hover);
+    font-size: 1.1rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(92, 103, 242, 0.4);
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+/* 모달 (광고 영역) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 8, 15, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 50px;
+    border-radius: 36px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+}
+
+.modal-content h2 {
+    color: #c4b5fd;
+    margin-top: 0;
+    font-size: 1.7rem;
+}
+
+.mock-ad {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 2px dashed rgba(148, 163, 184, 0.4);
+    padding: 40px;
+    border-radius: 24px;
+    transition: all 0.3s;
+    margin: 30px 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.mock-ad:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.ad-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.mock-ad h3 {
+    color: var(--primary-hover);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.mock-ad p {
+    color: var(--success-hover);
+    font-weight: 600;
+    margin: 0;
+}
